@@ -10,6 +10,7 @@ How long does each timer count last?
 Each timer count lasts 1 us.
 
 Annotate picture
+![alt tag](https://raw.githubusercontent.com/seanbapty/Lab5/master/timerpicuture.JPG)
 ```
 TAR = 0;						// reset timer and
 			while(IR_DECODER_PIN==0);		// wait while IR is logic 0
