@@ -37,3 +37,16 @@ Annotate picture
 |      |                |                |                |
 | mean | 1.5375         | 0.58125        | 0.475          |
 | sd   | 0.023145502    | 0.025877458    | 0.026726124    |
+
+
+| Button | code (not including start and stop bits) |
+|--------|------------------------------------------|
+| 0      | 30DF20DF                                 |
+| 1      | 30DFA05F                                 |
+| 2      | 30DF609F                                 |
+| 3      | 30DFE01F                                 |
+| Power  | 30DFA857                                 |
+| VOL +  | EA9A1A5A1A                               |
+| VOL -  | EA9A1A5A1A                               |
+| CH +   | 30DF40BF                                 |
+| CH -   | 30DFC03F                                 |
