@@ -1,7 +1,7 @@
 Lab5
 ====
 
-Reverse Engineering a Remote Control
+#Reverse Engineering a Remote Control
 
 How long will it take for the timer to rollover?
 The clock is 8 MHz TACCR0 goes to 0xFFFF, and the clock divider is 3 so 65.5 ms.
