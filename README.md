@@ -2,7 +2,7 @@ Lab5
 ====
 
 #Reverse Engineering a Remote Control
-
+##Day 1
 How long will it take for the timer to rollover?
 The clock is 8 MHz TACCR0 goes to 0xFFFF, and the clock divider is 3 so 65.5 ms.
 
@@ -52,3 +52,7 @@ Annotate picture
 | VOL -  | EA9A1A5A1A                               |
 | CH +   | 30DF40BF                                 |
 | CH -   | 30DFC03F                                 |
+
+##Day 2
+####Documentation
+C2C Yarbourough explained that to sum an array I could or the ones and not and the zeros
