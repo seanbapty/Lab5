@@ -159,5 +159,12 @@ __interrupt void pinChange (void) {
 
 } // end pinChange ISR
 ```
+##Debugging
+Most of the debugging time was spent accurately calling the timer interrupt so that the remote was not recieving "junk" signals after the appropirate data was sent. This was solved mostly by trial and error to get the syntax of refferencing TACCR0 and oring the parameters for the timer together. I was helped by the code written in the test file of the lab, and C2C Yarbourough's code. In the future this code can be used as a template to avoid further difficulty. 
+Additionally, small changes were made to the button constants as they were found to be different that initally determined from the logic analyzer.
+##Testing
+The first thing that was tested was that a single button could turn on both lights. To get this to work, the changes to the header and main() loop were implemented, but the timer was not altered. After confirming that the lights could be turned on, individual buttons were set to turn on individual lights. Finally, the toggleing function was implemented by appropriatly implmenting the timer delay to recieve new data and block out "junk" data.
+##Observations and Conclusions
+
 ####Documentation
-C2C Yarbourough explained that to sum an array I could or the ones and not and the zeros
+C2C Yarbourough explained that to sum an array I could or the ones and not and the zeros. I also referenced C2C Yarbourough's code to get the specific syntax of calling the delay timer.
