@@ -61,5 +61,11 @@ Each timer count lasts 1 us.
 ##Day 2
 The required functionality was achieved by implementing the "PWR" button to toggle the red LED on and off, and the "ZER" button to toggle the green LED on and off. A Functionality was not achieved.
 
+#Code
+##Pseudocode
+Very little psudocode was needed, because there was very little code that had to be written. However, the trickiest part of the lab was getting the program to read and decode the message coming in from the remote. Normally this could be done with a simple comparison, but the data coming in was bit-by-bit stored in an array, and the comparison values defined in the header were one dimensional. Therefore, a comparison value was made with a shifting logic high bit and the result was either incremented or kept the same based on the comparison between the incoming data and the comparison array.
+```
+
+
 ####Documentation
 C2C Yarbourough explained that to sum an array I could or the ones and not and the zeros
