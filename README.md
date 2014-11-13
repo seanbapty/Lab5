@@ -78,6 +78,86 @@ loop through all the bits coming in from the remote
 				rotate comparison with a 1 in the MSB to the right
 			}
 ```
+##C Code
+There were 3 main changes made to this lab. The first was to change the constants defined in the header to values specific to the remote used.
+```
+#define		ZER		0x30DF20DE //updated key values based on logic analyzer output
+#define		PWR		0x30DFA856
+#define		ONE		0x30DFA05F
+#define		TWO		0x30DF609F
+#define		THR		0x30DFE01F
 
+#define		VOL_UP	0xEA9A1A5A1A
+#define		VOL_DW	0xEA9A1A5A1A
+#define		CH_UP	0x30DF40BF
+#define		CH_DW	0x30DFC03F
+```
+Second, it was necessary to implement the pseudocode above to read the data coming into the program.
+```
+void main(void) {
+
+	initMSP430();				// Setup MSP to process IR and buttons
+	P1DIR |= BIT0 | BIT6;
+	P1OUT &= ~(BIT0 & BIT6);
+
+	while(1)  {
+		int32 checkValue = 0x80000000; //comparison value with a 1 set in the MSB
+		if (packetIndex == 34) {	   //start filling data at the appropriate time
+			//newIrPacket = TRUE;
+			int i = 2;
+			for (i; i<33; i++){ //32 bit data packets
+				if(packetData[i]>1500){	//logic one sent from remote
+					result |= checkValue;
+				}
+				else if(packetData[i]<600){//logic zero sent from remote
+					result &= ~checkValue;
+				}
+				checkValue >>=1; //rotate the bit right of the compare value
+			}
+			if (result==PWR){    //button press defined in header
+				P1OUT ^= BIT6;
+
+			}
+			else if (result==ZER){
+				P1OUT ^= BIT0;
+			}
+			//result=0;
+			packetIndex++;
+		} // end if new IR packet arrived
+	} // end infinite loop
+} // end main
+```
+Finally, it was necessary to set the interrupt flag so that after recieving data there was a delay, and then the program could begin recieving new data as soon as the user was ready to press the remote.
+```
+#pragma vector = PORT2_VECTOR			// This is from the MSP430G2553.h file
+
+__interrupt void pinChange (void) {
+
+	int8	pin;
+	int16	pulseDuration;			// The timer is 16-bits
+
+	if (IR_PIN)		pin=1;	else pin=0;
+
+	switch (pin) {					// read the current pin level
+		case 0:						// !!!!!!!!!NEGATIVE EDGE!!!!!!!!!!
+			pulseDuration = TAR;
+			TACTL = 0;
+			packetData[packetIndex++] = pulseDuration;
+			LOW_2_HIGH; 				// Setup pin interrupr on positive edge
+			break;
+
+		case 1:							// !!!!!!!!POSITIVE EDGE!!!!!!!!!!!
+			TAR = 0x0000;				// time measurements are based at time 0
+			TA0CCR0 = 0xFFFF;			//set up time delay between when new data will be recieved
+			TACTL &= ~TAIFG;
+			TACTL = ID_3 | TASSEL_2 | MC_1 | TAIE;
+			HIGH_2_LOW; 						// Setup pin interrupr on positive edge
+			break;
+	} // end switch
+
+	P2IFG &= ~BIT6;			// Clear the interrupt flag to prevent immediate ISR re-entry
+
+} // end pinChange ISR
+```
 ####Documentation
 C2C Yarbourough explained that to sum an array I could or the ones and not and the zeros
