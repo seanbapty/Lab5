@@ -2,7 +2,11 @@ Lab5
 ====
 
 #Reverse Engineering a Remote Control
+##Purpose
+The goal of this lab was to use your knowledge of interrupts and the Timer_A subsytem to reverse engineer a remote control.
+
 ##Day 1
+###Timer Counts
 How long will it take for the timer to rollover?
 The clock is 8 MHz TACCR0 goes to 0xFFFF, and the clock divider is 3 so 65.5 ms.
 
@@ -11,7 +15,7 @@ Each timer count lasts 1 us.
 
 Annotate picture
 ![alt tag](https://raw.githubusercontent.com/seanbapty/Lab5/master/timerpicuture.JPG)
-
+###IR data packets
 | Pulse                     | Duration (ms) | Timer A counts |
 |---------------------------|---------------|----------------|
 | Start logic 0 half-pulse  | 8.828         | 8828           |
