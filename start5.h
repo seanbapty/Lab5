@@ -1,8 +1,8 @@
 //-----------------------------------------------------------------
-// Name:	Coulston
+// Name:	Coulston and Bapty
 // File:	lab5.h
 // Date:	Fall 2014
-// Purp:	Include file for the MSP430
+// Purp:	Include file for the MSP430 and define remote dependent constants
 //-----------------------------------------------------------------
 
 //-----------------------------------------------------------------
