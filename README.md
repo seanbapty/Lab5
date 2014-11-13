@@ -4,7 +4,8 @@ Lab5
 #Reverse Engineering a Remote Control
 ##Purpose
 The goal of this lab was to use your knowledge of interrupts and the Timer_A subsytem to reverse engineer a remote control.
-
+##Preliminary Design
+Although I did not understand how to implement the objectives, going into the lab I had a basic understanding that our Microcontroller should recieve remote control signals and use them to tun on off lights.
 ##Day 1
 ###Timer Counts
 How long will it take for the timer to rollover?
@@ -13,8 +14,8 @@ The clock is 8 MHz TACCR0 goes to 0xFFFF, and the clock divider is 3 so 65.5 ms.
 How long does each timer count last?
 Each timer count lasts 1 us.
 
-Annotate picture
 ![alt tag](https://raw.githubusercontent.com/seanbapty/Lab5/master/timerpicuture.JPG)
+
 ###IR data packets
 | Pulse                     | Duration (ms) | Timer A counts |
 |---------------------------|---------------|----------------|
@@ -58,5 +59,7 @@ Annotate picture
 | CH -   | 30DFC03F                                 |
 
 ##Day 2
+The required functionality was achieved by implementing the "PWR" button to toggle the red LED on and off, and the "ZER" button to toggle the green LED on and off. A Functionality was not achieved.
+
 ####Documentation
 C2C Yarbourough explained that to sum an array I could or the ones and not and the zeros
