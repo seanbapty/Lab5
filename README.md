@@ -165,6 +165,6 @@ Additionally, small changes were made to the button constants as they were found
 ##Testing
 The first thing that was tested was that a single button could turn on both lights. To get this to work, the changes to the header and main() loop were implemented, but the timer was not altered. After confirming that the lights could be turned on, individual buttons were set to turn on individual lights. Finally, the toggleing function was implemented by appropriatly implmenting the timer delay to recieve new data and block out "junk" data.
 ##Observations and Conclusions
-
+It is interesting that with very little processing power, a computer can recieve signals via a periferal, and make a decision based on the periferal input. In order to improve, if this lab is conducted again, it would be useful to implement the A functionality and interact with another periferal, the LCD screen to create a remote control PONG game. Additionally, it may be usefull to create a program that works with several different types of remotes.
 ####Documentation
-C2C Yarbourough explained that to sum an array I could or the ones and not and the zeros. I also referenced C2C Yarbourough's code to get the specific syntax of calling the delay timer.
+C2C Yarbourough explained that to sum an array I could or the ones and not and the zeros. I also referenced C2C Yarbourough's code to get the specific syntax of calling the delay timer. I also referenced Dr. Coulston's code given to us over the course of the semester.
