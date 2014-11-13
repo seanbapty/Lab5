@@ -64,8 +64,20 @@ The required functionality was achieved by implementing the "PWR" button to togg
 #Code
 ##Pseudocode
 Very little psudocode was needed, because there was very little code that had to be written. However, the trickiest part of the lab was getting the program to read and decode the message coming in from the remote. Normally this could be done with a simple comparison, but the data coming in was bit-by-bit stored in an array, and the comparison values defined in the header were one dimensional. Therefore, a comparison value was made with a shifting logic high bit and the result was either incremented or kept the same based on the comparison between the incoming data and the comparison array.
-```
 
+Below is the pseudocode that helped solve this dilema of adding an array to an integer.
+```
+comparison value of same length as incoming data with a 1 in the MSB
+loop through all the bits coming in from the remote
+				if there is a one coming in from the remote
+					OR result with comparison value (a one in the comparison or'ed with anything will yield a one)
+				}
+				if there is a zero coming in from the remote
+					not the comarison array changing the one to a zero and and then and it with the result value (0 and with anything is zero)
+					}
+				rotate comparison with a 1 in the MSB to the right
+			}
+```
 
 ####Documentation
 C2C Yarbourough explained that to sum an array I could or the ones and not and the zeros
