@@ -1,8 +1,8 @@
 //-----------------------------------------------------------------
-// Name:	Coulston
+// Name:	Coulston and Bapty
 // File:	lab5.c
 // Date:	Fall 2014
-// Purp:	Demo the decoding of an IR packet
+// Purp:	Demo the decoding of an IR packet sent via remote to turn on/off the MSP430s LED light
 //-----------------------------------------------------------------
 #include <msp430g2553.h>
 #include "start5.h"
